@@ -11,13 +11,11 @@ const initialValues = {
 const onSubmit = (values) => {
   console.log("onsubmit", values);
 };
-
 const validationSchema = yup.object({
   name: yup.string().required("Required"),
   email: yup.string().email().required("Required"),
   channel: yup.string().required("Required"),
 });
-
 function TextForm() {
   return (
     <Formik
@@ -42,15 +40,11 @@ function TextForm() {
             <Field type="text" id="channel" name="channel" />
             <ErrorMessage name="channel" />
           </div>
-
           <button type="submit">Submit</button>
-
           <h2>display</h2>
-          {}
         </Form>
       </div>
     </Formik>
   );
 }
-
 export default TextForm;
