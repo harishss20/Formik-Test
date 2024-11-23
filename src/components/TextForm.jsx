@@ -40,6 +40,11 @@ function TextForm() {
             <Field type="text" id="channel" name="channel" />
             <ErrorMessage name="channel" />
           </div>
+          <div>
+            <label htmlFor="comments">Comments </label>
+            <Field as="textarea" id="comments" name="comments" />
+            <ErrorMessage name="channel" />
+          </div>
           <button type="submit">Submit</button>
           <h2>display</h2>
         </Form>
