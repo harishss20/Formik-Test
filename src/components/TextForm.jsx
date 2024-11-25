@@ -15,7 +15,7 @@ const onSubmit = (values) => {
 };
 const validationSchema = yup.object({
   name: yup.string().required("Required"),
-  email: yup.string().email().required("Required"),
+  email: yup.string().email().required("Email is Required"),
   channel: yup.string().required("Required"),
   comments: yup.string().required("Required").max(20),
   address: yup.string().required("Required").max(20),
@@ -32,12 +32,14 @@ function TextForm() {
           <div>
             <label htmlFor="name">Name</label>
             <Field type="text" id="name" name="name" />
-            <ErrorMessage name="name" component={TextError} />
+            <ErrorMessage name="name" />
           </div>
           <div>
             <label htmlFor="email">Email </label>
             <Field type="text" id="email" name="email" />
-            <ErrorMessage name="email" component={TextError} />
+            <ErrorMessage name="email">
+              {(errorMsg) => <div className="error">{errorMsg}</div>}
+            </ErrorMessage>
           </div>
           <div>
             <label htmlFor="channel">Channel </label>

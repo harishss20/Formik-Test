@@ -4,7 +4,7 @@ function TextError(props) {
   return (
     <div>
       {console.log(props)}
-      <div class="error">{props.children}</div>
+      <div className="error">{props.children}</div>
     </div>
   );
 }
