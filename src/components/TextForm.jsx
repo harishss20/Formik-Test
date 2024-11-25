@@ -9,6 +9,10 @@ const initialValues = {
   channel: "",
   comments: "",
   address: "",
+  social: {
+    facebook: "",
+    twitter: "",
+  },
 };
 const onSubmit = (values) => {
   console.log("onsubmit", values);
@@ -67,6 +71,17 @@ function TextForm() {
               }}
             </Field>
           </div>
+
+          <div>
+            <label htmlFor="facebook">Facebook</label>
+            <Field id="facebook" name="social.facebook" />
+          </div>
+
+          <div>
+            <label htmlFor="twitter"> Twitter</label>
+            <Field id="twitter" name="social.twitter" />
+          </div>
+
           <button type="submit">Submit</button>
           <h2>display</h2>
         </Form>
