@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
 import * as yup from "yup";
 import "../App.css";
 import TextError from "./TextError";
@@ -13,6 +13,8 @@ const initialValues = {
     facebook: "",
     twitter: "",
   },
+  phoneNumber: ["", ""],
+  pNumber: [""],
 };
 const onSubmit = (values) => {
   console.log("onsubmit", values);
@@ -71,17 +73,57 @@ function TextForm() {
               }}
             </Field>
           </div>
-
           <div>
             <label htmlFor="facebook">Facebook</label>
             <Field id="facebook" name="social.facebook" />
           </div>
-
           <div>
             <label htmlFor="twitter"> Twitter</label>
             <Field id="twitter" name="social.twitter" />
           </div>
-
+          <div>
+            <label htmlFor="prinum">Primary number</label>
+            <Field id="facebook" name="phoneNumber[0]" />
+          </div>
+          <div>
+            <label htmlFor="secnum">Secondary Number</label>
+            <Field id="facebook" name="phoneNumber[1]" />
+          </div>
+          <FieldArray name="pNumber">
+            {(props) => {
+              console.log(props);
+              const { form, remove, push } = props;
+              const { values } = form;
+              const { pNumber } = values;
+              return (
+                <div>
+                  {pNumber.map((ph, index) => (
+                    <div key={index}>
+                      <Field name={`pNumber[${index}]`} />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          push("");
+                        }}
+                      >
+                        Add{" "}
+                      </button>
+                      {index > 0 && (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            remove(index);
+                          }}
+                        >
+                          Remove
+                        </button>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              );
+            }}
+          </FieldArray>
           <button type="submit">Submit</button>
           <h2>display</h2>
         </Form>
