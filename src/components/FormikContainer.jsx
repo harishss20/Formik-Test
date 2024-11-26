@@ -14,17 +14,26 @@ const radioOp = [
   { key: "china", value: "china" },
   { key: "usa", value: "usa" },
 ];
+const checkOp = [
+  { key: "india", value: "india" },
+  { key: "china", value: "china" },
+  { key: "usa", value: "usa" },
+];
 const initialValues = {
   email: "",
   textarea: "",
   country: "",
   radioOp: "",
+  checkbox: [],
 };
 const validationSchema = Yup.object({
   email: Yup.string().email().required("Required"),
   textarea: Yup.string().max(200).required("Yes"),
   country: Yup.string().required("Required"),
   radioOp: Yup.string().required("Required"),
+  checkbox: Yup.array()
+    .min(1, "Please select at least one checkbox")
+    .required("required"),
 });
 const onSubmit = (value) => {
   console.log(value);
@@ -65,6 +74,12 @@ function FormikContainer() {
                 label="Select the country"
                 name="radioOp"
                 options={radioOp}
+              />
+              <FormikControl
+                control="checkbox"
+                label="Select the country"
+                name="checkbox"
+                options={checkOp}
               />
               <button type="submit">submit</button>
             </Form>
