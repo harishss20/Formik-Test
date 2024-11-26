@@ -3,13 +3,28 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import FormikControl from "./FormikControl";
 
+const dropDownOptions = [
+  { key: "Country", value: "" },
+  { key: "india", value: "india" },
+  { key: "china", value: "china" },
+  { key: "usa", value: "usa" },
+];
+const radioOp = [
+  { key: "india", value: "india" },
+  { key: "china", value: "china" },
+  { key: "usa", value: "usa" },
+];
 const initialValues = {
   email: "",
   textarea: "",
+  country: "",
+  radioOp: "",
 };
 const validationSchema = Yup.object({
   email: Yup.string().email().required("Required"),
   textarea: Yup.string().max(200).required("Yes"),
+  country: Yup.string().required("Required"),
+  radioOp: Yup.string().required("Required"),
 });
 const onSubmit = (value) => {
   console.log(value);
@@ -38,6 +53,18 @@ function FormikContainer() {
                 control="textarea"
                 label="TextArea"
                 name="textarea"
+              />
+              <FormikControl
+                control="select"
+                label="Select the country"
+                name="country"
+                options={dropDownOptions}
+              />
+              <FormikControl
+                control="radio"
+                label="Select the country"
+                name="radioOp"
+                options={radioOp}
               />
               <button type="submit">submit</button>
             </Form>
