@@ -1,10 +1,12 @@
 import React from "react";
+import Input from "./Input.jsx";
 
-function FromikControl(props) {
-  const { control } = props;
-  console.log(control);
+function FormikControl(props) {
+  const { control, ...rest } = props;
+
   switch (control) {
     case "input":
+      return <Input {...rest} />;
     case "textarea":
     case "select":
     case "radio":
@@ -15,4 +17,4 @@ function FromikControl(props) {
   }
 }
 
-export default FromikControl;
+export default FormikControl;

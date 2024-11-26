@@ -1,14 +1,19 @@
 import React from "react";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
+import FormikControl from "./FormikControl";
 
-const initialValues = {};
-const validationSchema = Yup.object({});
+const initialValues = {
+  email: "",
+};
+const validationSchema = Yup.object({
+  email: Yup.string().email().required("Required"),
+});
 const onSubmit = (value) => {
   console.log(value);
 };
 
-function Control() {
+function FormikContainer() {
   return (
     <div>
       {" "}
@@ -21,7 +26,13 @@ function Control() {
         >
           {(formik) => (
             <Form>
-              <submit type="submit">submit</submit>
+              <FormikControl
+                control="input"
+                type="email"
+                label="Email"
+                name="email"
+              />
+              <button type="submit">submit</button>
             </Form>
           )}
         </Formik>
@@ -30,4 +41,4 @@ function Control() {
   );
 }
 
-export default Control;
+export default FormikContainer;
