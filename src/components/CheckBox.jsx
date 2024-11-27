@@ -10,11 +10,11 @@ function CheckBox(props) {
         {({ field }) =>
           options.map((op) => (
             <React.Fragment key={op.value}>
+              {console.log(field)}
               <input
                 type="checkbox"
                 id={op.value}
                 {...field}
-                {...rest}
                 value={op.value}
                 checked={field.value.includes(op.value)}
               />
