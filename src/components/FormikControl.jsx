@@ -4,6 +4,7 @@ import TextArea from "./TextArea.jsx";
 import Select from "./Select.jsx";
 import RadioButtons from "./RadioButtons.jsx";
 import CheckBox from "./CheckBox.jsx";
+import DatePicker from "./DatePicker.jsx";
 function FormikControl(props) {
   const { control, ...rest } = props;
 
@@ -19,6 +20,7 @@ function FormikControl(props) {
     case "checkbox":
       return <CheckBox {...rest} />;
     case "date":
+      return <DatePicker {...rest} />;
     default:
       return null;
   }
